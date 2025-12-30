@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 教學方向 - 滲透測試完全指南</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft JhengHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            max-width: 100%;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        .nav {
+            background: #f8f9fa;
+            padding: 12px 20px;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav a {
+            background: white;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            border: 2px solid #667eea;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+        .nav a.active {
+            background: #667eea;
+            color: white;
+        }
+        .content {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+            font-size: 1.6em;
+        }
+        h3 {
+            color: #667eea;
+            margin: 20px 0 15px 0;
+            font-size: 1.2em;
+        }
+        p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .card p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .step-box {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            display: flex;
+            gap: 15px;
+        }
+        .step-num {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .step-text {
+            flex: 1;
+        }
+        ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 2px solid #ddd;
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.4em; }
+            .content { padding: 20px 15px; }
+            h2 { font-size: 1.3em; }
+            .nav { flex-direction: column; }
+            .nav a { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 教學方向</h1>
+            <p>滲透測試完全指南</p>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">🏠 首頁</a>
+            <a href="beginner-guide.html">🎓 初學者指南</a>
+            <a href="study-guide.html">📚 學習路線</a>
+            <a href="1-teaching-direction.html" class="active">📖 教學方向</a>
+            <a href="2-complete-map.html">🗺️ 完整地圖</a>
+            <a href="3-eight-stages.html">📊 8大階段</a>
+            <a href="4-resources.html">🛠️ 補充資料</a>
+        </div>
+
+        <div class="content">
+            <h2>🎯 課程教學方向</h2>
+            <p>本課程採用漸進式教學，從基礎偵察到高級提權，循序漸進地帶你掌握滲透測試的完整流程。</p>
+
+            <h3>📖 課程架構</h3>
+            <p>我們的課程分為三個層級，適合不同基礎的學習者：</p>
+
+            <div class="card">
+                <h4>🟢 初級：入門基礎</h4>
+                <p>✅ 了解滲透測試的基本概念和流程<br>
+                   ✅ 掌握網路偵察和掃描技巧<br>
+                   ✅ 理解常見漏洞的原理<br>
+                   ✅ 認識基本的安全防禦概念</p>
+            </div>
+
+            <div class="card">
+                <h4>🟡 中級：實戰應用</h4>
+                <p>✅ SQL Injection 漏洞利用<br>
+                   ✅ WebShell 上傳和部署<br>
+                   ✅ 反向 Shell 建立和控制<br>
+                   ✅ 系統提權技巧（基礎）</p>
+            </div>
+
+            <div class="card">
+                <h4>🔴 高級：深度優化</h4>
+                <p>✅ 多種提權方法（3種以上）<br>
+                   ✅ 防禦繞過技術<br>
+                   ✅ 蹤跡清除方法<br>
+                   ✅ 系統安全加固建議</p>
+            </div>
+
+            <h3>📘 課程特色</h3>
+            <ul>
+                <li>💬 包含飛飛老師課堂的真實對話和問答</li>
+                <li>🔄 提供三種不同的學習版本可根據需要選擇</li>
+                <li>⏱️ 預計 6-10 小時完成全部課程</li>
+                <li>✅ 8 個互動測驗檢驗學習成果</li>
+                <li>📱 完全手機友善的響應式設計</li>
+                <li>🌙 支援深色模式自動切換</li>
+                <li>🔄 自動保存學習進度</li>
+            </ul>
+
+            <h3>🎓 建議學習方式</h3>
+            <p>我們為不同的使用者提供了推薦的學習路徑：</p>
+
+            <div class="step-box">
+                <div class="step-num">1️⃣</div>
+                <div class="step-text">
+                    <strong>了解全貌 (5分鐘)</strong><br>
+                    瀏覽「完整地圖」，理解整個滲透測試的 8 大階段和流程
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-num">2️⃣</div>
+                <div class="step-text">
+                    <strong>按章節學習 (2-3小時)</strong><br>
+                    逐個完成 10 個課程章節，掌握每個階段的技術和手法
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-num">3️⃣</div>
+                <div class="step-text">
+                    <strong>做題檢驗 (1小時)</strong><br>
+                    完成 8 個小測驗確認對知識的理解程度
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-num">4️⃣</div>
+                <div class="step-text">
+                    <strong>實戰練習 (持續進行)</strong><br>
+                    在 HackTheBox、VulnHub 等平台進行動手實驗
+                </div>
+            </div>
+
+            <h3>🎯 學習路徑選擇</h3>
+
+            <div class="card">
+                <h4>新手使用者</h4>
+                <p>建議順序：教學方向 → 完整地圖 → 8大階段 → 補充資料<br>
+                時間：約 1 天完成基礎學習</p>
+            </div>
+
+            <div class="card">
+                <h4>進階使用者</h4>
+                <p>建議順序：完整地圖 → 補充資料 → 實戰練習<br>
+                時間：快速參考，根據需要查閱</p>
+            </div>
+
+            <div class="card">
+                <h4>開發者/資安人員</h4>
+                <p>建議順序：8大階段 → 補充資料 → 深入研究<br>
+                時間：深度學習，2-3 週完成</p>
+            </div>
+
+            <h3>💡 關鍵學習目標</h3>
+            <p>完成本課程後，你將能夠：</p>
+            <ul>
+                <li>理解滲透測試的完整流程（從偵察到提權）</li>
+                <li>掌握常見的 Web 漏洞利用技巧</li>
+                <li>執行系統提權操作</li>
+                <li>使用專業的安全測試工具</li>
+                <li>設計和實施防禦措施</li>
+                <li>形成攻防兼備的安全思維</li>
+            </ul>
+
+            <div class="card" style="background: #fff3cd; border-left-color: #ffc107;">
+                <h4>⚠️ 重要提醒</h4>
+                <p>本課程教授的知識僅供教育目的使用。所有滲透測試活動必須在有明確授權的環境進行，未經授權對他人系統進行滲透測試是違法的。請始終遵守法律和道德準則。</p>
+            </div>
+
+            <h2>🔄 版本選擇指南</h2>
+            <p>我們提供了多個版本的課程，適應不同的學習需求：</p>
+
+            <div class="card">
+                <h4>📱 手機友善版</h4>
+                <p><strong>最適合：</strong> 移動中快速學習<br>
+                <strong>特點：</strong> 清晰的五分頁結構、可折疊內容、手機優化<br>
+                <strong>時間：</strong> 快速查詢，隨時學習</p>
+            </div>
+
+            <div class="card">
+                <h4>✨ UX優化版（推薦）</h4>
+                <p><strong>最適合：</strong> 深度系統學習<br>
+                <strong>特點：</strong> 進度保存、深色模式、側邊欄導航<br>
+                <strong>時間：</strong> 2-3 小時完成</p>
+            </div>
+
+            <div class="card">
+                <h4>📚 基礎版</h4>
+                <p><strong>最適合：</strong> 初學者詳細學習<br>
+                <strong>特點：</strong> Mermaid 圖表、完整 10 章節<br>
+                <strong>時間：</strong> 3-4 小時完成</p>
+            </div>
+
+            <div class="card">
+                <h4>💬 Q&A版</h4>
+                <p><strong>最適合：</strong> 查詢課堂對話和常見問題<br>
+                <strong>特點：</strong> 飛飛老師課堂記錄、快速參考<br>
+                <strong>時間：</strong> 30分鐘瀏覽</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🔐 滲透測試完全指南 | 用知識保護世界 | 做一個道德駭客</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">感謝飛飛老師和助教的精彩教導 🙏</p>
+        </div>
+    </div>
+</body>
+</html>

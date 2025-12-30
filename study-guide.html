@@ -327,6 +327,7 @@
             color: white;
         }
 
+        /* 平板設備（768px 以下） */
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -336,8 +337,16 @@
                 font-size: 1.8em;
             }
 
+            h2 {
+                font-size: 1.3em;
+            }
+
             .learning-path {
                 grid-template-columns: 1fr;
+            }
+
+            .path-icon {
+                font-size: 2.5em;
             }
 
             .resources-grid {
@@ -351,6 +360,153 @@
             .btn {
                 width: 100%;
                 text-align: center;
+            }
+
+            /* Timeline 改為垂直布局 */
+            .timeline-item {
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+
+            .timeline-marker {
+                min-width: auto;
+                width: 100%;
+                text-align: left;
+                padding-right: 0;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #667eea;
+            }
+
+            .timeline-content {
+                padding: 15px;
+            }
+
+            /* Curriculum 改為垂直布局 */
+            .curriculum-item {
+                flex-direction: column;
+                padding: 12px;
+            }
+
+            .curriculum-number {
+                min-width: auto;
+                margin-bottom: 8px;
+            }
+
+            .curriculum-content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        /* 超小屏幕設備（480px 以下） */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            header {
+                padding-bottom: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                margin-bottom: 8px;
+            }
+
+            h2 {
+                font-size: 1.2em;
+                padding-left: 10px;
+                margin-top: 20px;
+                margin-bottom: 15px;
+            }
+
+            .subtitle {
+                font-size: 0.95em;
+            }
+
+            .learning-path {
+                gap: 15px;
+            }
+
+            .path-card {
+                padding: 15px;
+            }
+
+            .path-icon {
+                font-size: 2em;
+                margin-bottom: 10px;
+            }
+
+            .path-title {
+                font-size: 1em;
+                margin-bottom: 8px;
+            }
+
+            .path-desc {
+                font-size: 0.85em;
+                margin-bottom: 10px;
+            }
+
+            .difficulty {
+                font-size: 0.75em;
+                padding: 6px 12px;
+            }
+
+            .curriculum {
+                padding: 15px;
+                margin: 15px 0;
+            }
+
+            .resource-box {
+                padding: 15px;
+            }
+
+            .resource-icon {
+                font-size: 1.5em;
+            }
+
+            .resource-link {
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
+
+            .timeline-marker {
+                font-size: 0.85em;
+            }
+
+            .timeline-content {
+                font-size: 0.9em;
+                padding: 12px;
+            }
+
+            .timeline-content h3 {
+                font-size: 1em;
+                margin-bottom: 8px;
+            }
+
+            .timeline-content p {
+                font-size: 0.85em;
+            }
+
+            .tips-box {
+                padding: 15px;
+            }
+
+            .tips-title {
+                font-size: 1em;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+
+            .alert {
+                padding: 12px;
+                font-size: 0.9em;
             }
         }
 
